@@ -1,5 +1,3 @@
-![img](img.shields.io/github/stars/jokeman332/Discord-Token-Checker)
-
 # Discord-Token-Checker
 Discord Token Checker fast, can save all valid tokens in a file.
 ## Run The Checker
