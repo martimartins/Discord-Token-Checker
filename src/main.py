@@ -5,7 +5,6 @@ from os import system, path
 
 import sys
 import aiohttp
-import uuid
 
 if sys.version_info < (3, 7):
     exit(f"Python version ({sys.version}) dont support asyncio syntax used in this script.\n\nPlease update to Python 3.7>=.")
