@@ -56,8 +56,6 @@ class TokenCheker:
 
                 yield line
 
-        print("Start checking {} tokens...".format(tokens))
-
     async def check_token(self, token: str) -> None:
         """This function will try login into discord api using token,
 
@@ -75,19 +73,18 @@ class TokenCheker:
 
     async def _run(self) -> None:
         tasks: list = []
+        cls()
         for token in self.load_tokens(q2): 
             self._requests_count += 1
 
             if self._requests_count >= self._rate_limit:
-                print(i, "Rate limit was active waiting 1 second...")
+                print(i, "\nRate limit was active waiting 1 second...\n")
                 self._requests_count = 0
                 await asyncio.sleep(1)
 
             tasks.append(asyncio.create_task(self.check_token(token)))
-            cls()
-            print("{}Total checked: {} | Working: {} | Not Working: {}".format(i, self.counter_working + self.counter_not_working, self.counter_working, self.counter_not_working))
+            print("{}Total checked: {} | Working: {} | Not Working: {}".format(i, self.counter_working + self.counter_not_working, self.counter_working, self.counter_not_working), end="\r")
         await asyncio.wait(tasks)
-        cls()
         print("{}Total checked: {} | Working: {} | Not Working: {}".format(i, self.counter_working + self.counter_not_working, self.counter_working, self.counter_not_working))
 
 if __name__ == '__main__':
